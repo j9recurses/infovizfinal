@@ -1,8 +1,9 @@
+
 d3.helper = {};
 
     d3.helper.tooltip = function(){
         var tooltipDiv;
-        var bodyNode = d3.select('body').node();
+        var bodyNode = d3.select('#maincrimes').node();
         var attrs = {};
         var text = '';
         var styles = {};
@@ -144,7 +145,7 @@ d3.helper = {};
                     .attr("transform", "translate(-800,200)")
                 
 
-                 .call(d3.helper.tooltip()
+                .call(d3.helper.tooltip()
                 .attr({class: function(d, i) { return d + ' ' +  i + ' A'; }})
 
                 .style({color: 'black'})

@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="./css/grid.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="./css/style.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Karla%7CMontserrat:700">
-	
+	<script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 
 <body>
@@ -65,8 +65,10 @@
 				<div class="grid_3">
 					
 						<h2>Total Crimes (2000-2012)</h2>
-						<div id="Bubbles">
-								<script src="http://d3js.org/d3.v3.min.js"></script>
+					<div id="bubble"> </div>
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 var diameter = 375,
@@ -78,13 +80,12 @@ var bubble = d3.layout.pack()
     .size([diameter, diameter])
     .padding(1.5);
 
-var svg = d3.select("#Bubble")
-	.append("svg")
+var svg = d3.select("#bubble").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
 
-d3.json("newbubbles.json", function(error, root) {
+d3.json("./bubbles/newbubbles.json", function(error, root) {
   var node = svg.selectAll(".node")
       .data(bubble.nodes(classes(root))
       .filter(function(d) { return !d.children; }))
@@ -209,33 +210,38 @@ scrolling="none">
 		</div>
 	</div>
 
+
 <div class="slide" id="slide1a" data-slide="3a" data-stellar-background-ratio="2">
 		
 		<div class="container clearfix">
 			<div id="content" class="grid_12">
 			<div id="content" class="grid_3">
-				<iframe src="./map/map.html"
-height="900px" width="700px"
-frameborder="0"
-scrolling="auto" margin-left: "95px;">
-<p>Your browser does not support iframes.</p>
-</iframe>
+	<iframe src="./map/map.html"
+							height="900px" width="700px"
+									frameborder="0"
+								scrolling="none" margin-left: "95px;">
+								<p>Your browser does not support iframes.</p>
+							</iframe>
+			
 			
 			</div>
 			<div id="content" class="grid_1">
 			</div>
+			
+
+
 			<div id="content" class="grid_5">
-				<iframe src="../tubesBarHierarchy.html"
-height="900px" width="700px"
-frameborder="0"
-scrolling="auto" margin-left: "95px;">
-<p>Your browser does not support iframes.</p>
-</iframe>
+				<iframe src="./other/tubesBarHierarchy.html"
+							height="900px" width="700px"
+									frameborder="0"
+								scrolling="none" margin-left: "95px;">
+								<p>Your browser does not support iframes.</p>
+							</iframe>
 			
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
 
 
 
@@ -267,14 +273,138 @@ scrolling="auto" margin-left: "95px;">
 
 	<div class="slide" id="slide1a" data-slide="4a" data-stellar-background-ratio="0.5">
 		<div class="container clearfix">
+	<div id="visualization"></div>
 
-			
-			<iframe src="../tubesParallel3.html"
-height="900px" width="700px"
-frameborder="0"
-scrolling="no">
-<p>Your browser does not support iframes.</p>
-</iframe>
+<script>
+
+var margin = {top: 30, right: 40, bottom: 20, left: 200},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var dimensions = [
+
+  {
+    name: "State",
+    scale: d3.scale.ordinal().rangePoints([0, height]),
+    type: String
+  },
+  {
+    name: "Cruelty",
+    scale: d3.scale.linear().range([0, height]),
+    type: Number
+  },
+  {
+    name: "Outrage to Modesty",
+    scale: d3.scale.linear().range([height, 0]),
+    type: Number
+  },
+  {
+    name: "Kidnappings",
+    scale: d3.scale.sqrt().range([height, 0]),
+    type: Number
+  },
+  {
+    name: "Rape",
+    scale: d3.scale.linear().range([height, 0]),
+    type: Number
+  },
+  {
+    name: "Sex ratio",
+    scale: d3.scale.linear().range([height, 0]),
+    type: Number
+  },
+  {
+    name: "Literacy rate",
+    scale: d3.scale.linear().range([height, 0]),
+    type: Number
+  }
+];
+
+var x = d3.scale.ordinal()
+    .domain(dimensions.map(function(d) { return d.name; }))
+    .rangePoints([0, width]);
+
+var line = d3.svg.line()
+    .defined(function(d) { return !isNaN(d[1]); });
+
+var yAxis = d3.svg.axis()
+    .orient("left");
+
+var svg = d3.select("#visualization").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var dimension = svg.selectAll(".dimension")
+    .data(dimensions)
+  .enter().append("g")
+    .attr("class", "dimension")
+    .attr("transform", function(d) { return "translate(" + x(d.name) + ")"; });
+
+d3.tsv("projections.tsv", function(data) {
+  dimensions.forEach(function(dimension) {
+    dimension.scale.domain(dimension.type === Number
+        ? d3.extent(data, function(d) { return +d[dimension.name]; })
+        : data.map(function(d) { return d[dimension.name]; }).sort());
+  });
+
+  svg.append("g")
+      .attr("class", "background")
+    .selectAll("path")
+      .data(data)
+    .enter().append("path")
+      .attr("d", draw);
+
+  svg.append("g")
+      .attr("class", "foreground")
+    .selectAll("path")
+      .data(data)
+    .enter().append("path")
+      .attr("d", draw);
+
+  dimension.append("g")
+      .attr("class", "axis")
+      .each(function(d) { d3.select(this).call(yAxis.scale(d.scale)); })
+    .append("text")
+      .attr("class", "title")
+      .attr("text-anchor", "middle")
+      .attr("y", -9)
+      .text(function(d) { return d.name; });
+
+  // Rebind the axis data to simplify mouseover.
+  svg.select(".axis").selectAll("text:not(.title)")
+      .attr("class", "label")
+      .data(data, function(d) { return d.name || d; });
+
+  var projection = svg.selectAll(".axis text,.background path,.foreground path")
+      .on("mouseover", mouseover)
+      .on("mouseout", mouseout);
+
+  function mouseover(d) {
+    svg.classed("active", true);
+    projection.classed("inactive", function(p) { return p !== d; });
+    projection.filter(function(p) { return p === d; }).each(moveToFront);
+  }
+
+  function mouseout(d) {
+    svg.classed("active", false);
+    projection.classed("inactive", false);
+  }
+
+  function moveToFront() {
+    this.parentNode.appendChild(this);
+  }
+});
+
+function draw(d) {
+  return line(dimensions.map(function(dimension) {
+    return [x(dimension.name), dimension.scale(d[dimension.name])];
+  }));
+}
+
+</script>
+		
 			
 
 		</div>
