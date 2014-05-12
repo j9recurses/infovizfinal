@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
+	<title>Crime Against Women in India</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="./css/normalize.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./css/grid.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./css/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Karla%7CMontserrat:700">
+	
+</head>
+
+<body>
+
+	<div class="menu">
+		<div class="container clearfix">
+
+			<div id="logo" class="grid_3">
+				<img src="images/AwarenessIndia_logo2.png">
+			</div>
+
+			<div id="nav" class="grid_9 omega">
+				<ul class="navigation">
+					<li data-slide="1">History</li>
+					<li data-slide="2">Perpetrators</li>
+					<li data-slide="3">Crime Hotspots</li>
+					<li data-slide="4">External factors </li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="slide" id="slidehead" data-slide="1" data-stellar-background-ratio="0.5">
+		<div class="container clearfix">
+		<div id="content" class="grid_12">
+				<h1>Background and History </h1><br/>
+				
+			</div>
+			<div id="content" class="grid_12"><p></p></div>
+			<div id="content" class="grid_12">
+
+			
+				<p> Crime against women has been a bane of India's development efforts. With arcane customs like sex being a taboo in India, Sati, and Dowry, and the overall lower status of women further exacerbates these crimes.</p><br/><br/>
+<p>From the last decade's crime statistics, we see sharp number of crimes registered under ‘Cruelty by Husband and his Relatives’. It also appears that the same category has had the most dramatic rise over the years.</p><br/><p>This is a surprising insight since the popular media is rife with news of rapes, which appear to be the most rampant and high profile of all the crimes. No other crime has been given as much attention in the media than Rape, with a significant increase in the last few years owing to cases like the Delhi Gang Rape, Scarlett Keeling Case in Goa, etc. which made international headlines.<p><br/></p>The hype in the media compels us to believe that rapes are on a dramatic rise. However, the data reveals that rapes have more or less followed a flat trend.</p><br/><p> This raises a lot of questions - if the number of rapes was always the same (or this high), why all the sudden media attention? Where was the media in earlier years? Could the data hiding the truth for the last few years?.  There could be any one or more of multiple possible explanations.
+</p>
+			</div>
+		</div>
+	</div>
+	
+
+
+	
+	<div class="slide" id="slide1a" data-slide="1a" data-stellar-background-ratio="0.5">
+		<div class="container clearfix">
+			<div id="content" class="grid_12">
+				<div class="grid_7" id="CategoryWiseLineChart">
+				</div>
+				<div class="grid_1"></div>
+				<div class="grid_3">
+					
+						<h2>Total Crimes (2000-2012)</h2>
+						<div id="Bubbles">
+								<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var diameter = 375,
+    format = d3.format(",d"),
+    color = d3.scale.category20c();
+
+var bubble = d3.layout.pack()
+    .sort(null)
+    .size([diameter, diameter])
+    .padding(1.5);
+
+var svg = d3.select("#Bubble")
+	.append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
+
+d3.json("newbubbles.json", function(error, root) {
+  var node = svg.selectAll(".node")
+      .data(bubble.nodes(classes(root))
+      .filter(function(d) { return !d.children; }))
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+  node.append("title")
+      .text(function(d) { return d.className + ": " + format(d.value); });
+
+
+  node.append("circle")
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return d3.rgb(d.color); });
+      //color(d.packageName); })
+
+  node.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.className.substring(0, d.r / 3); });
+
+
+});
+
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+function classes(root) {
+  var classes = [];
+
+  function recurse(name, node) {
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: node.size, color:node.color});
+  }
+
+  recurse(null, root);
+  return {children: classes};
+}
+
+d3.select(self.frameElement).style("height", diameter + "px");
+
+</script>
+
+
+						</div>
+				</div>
+
+				
+				
+			</div>
+			
+
+		</div>
+	
+
+	
+	<div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
+		<div class="container clearfix">
+		<div id="content" class="grid_12">
+				<h1>Perpetrators </h1>
+				<br/><br/>
+				<p>We wanted to gain an insight into the general profile (gender and age) of the offenders.
+					<ul>
+						<li><p>Surprisingly <b>high</b> number of women perpetrators are arrested under violence against women and they are found to be highest in the 30-45 age group. Women are most likely to be arrested for Domestic Cruelty and Dowry offenses. Typically, you would expect these to be in-laws of women who harass them for dowry or other domestic matters.</p><br/></li>
+						<li><p>Most arrested male offenders are for domestic cruelty and assault on women with intent to outrage their modesty. Also, the typical age group of male offenders seems to be 18-35 years which is when they are known to be most aggressive. </p><br/></li>
+						<li><p>Both males and females offenders seem to be least for the ages below 18 years and above 60 years. </p><br/><p>It seems like juvenile crimes do not typically have to do with women.  Female to male ratio seems to be highest for immoral trafficking and least for insult to the modesty of women. </p><br/><p>We also see very few people arrested under indecent representation of women, importation of girls from foreign countries and Sati. </p><br/><p>It seems like these type of niche crimes are either not that common or not recognized and/or reported by people due to ignorance or fear. 
+We also observe that the number of total perpetrators keeps decreasing through the stages from from Arrest through Chargesheeting to Conviction. </p><br/><p>A small percentage of people arrested for various different categories of crimes actually end up getting convicted. This reveals a gaping hole in the judicial system of India, which can be attributed to either loopholes in the legal systems or lack of talented lawyers. Alternatively, it could be the case that acquittals happen due to insufficient evidence, victims turning hostile (institution of family is strong in India, women are very likely to develop compassion or fear towards their perpetrators if they belong to the same family and consequently withdraw their statements.) or maybe even false positive cases (though this seems contrary to all existing evidence).
+</p></li>
+					</ul>
+
+				</p><br/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="slide" id="slide1a" data-slide="2a" data-stellar-background-ratio="0.5">
+		<div class="container clearfix">
+			<div id="content" class="grid_12">
+				
+				<div class="grid_5">
+				<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 500px; height: 500px;'><noscript><a href='#'><img alt='Sheet 13 ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Cr&#47;CrimeAgainstWomen&#47;Sheet13&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='500' height='500' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /> <param name='site_root' value='' /><param name='name' value='CrimeAgainstWomen&#47;Sheet13' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Cr&#47;CrimeAgainstWomen&#47;Sheet13&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='no' /><param name='display_overlay' value='no' /><param name='display_count' value='no' /><param name='showVizHome' value='no' /></object></div><div style='width:500px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'><div style='float:right; padding-right:8px;'></div></div> 
+
+				</div>
+				<div id="content" class="grid_1">
+				</div>
+
+				<div id="content" class="grid_5">
+				<iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="no" onload="" allowtransparency="false" width="700" height="500" src="./PercentBarChart/PercentBarChart.html"></iframe>
+				
+			</div>
+			</div>
+
+		</div>
+		<div class="grid_12">
+		
+		<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 754px; height: 419px;'><noscript><a href='#'><img alt='Dashboard 2 ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Cr&#47;CrimeAgainstWomen&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='754' height='419' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /> <param name='site_root' value='' /><param name='name' value='CrimeAgainstWomen&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Cr&#47;CrimeAgainstWomen&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showVizHome' value='no' /></object></div>
+			
+
+		</div>
+		<div><h2>Judicial outcomes for top crimes (2012)</h2>
+			
+
+			<iframe src="../tubesSunburst.html"
+height="900px" width="700px"
+frameborder="0"
+scrolling="none">
+<p>Your browser does not support iframes.</p>
+</iframe>
+
+		</div>
+	</div>
+</div>
+
+	
+	<div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="2">
+		
+		<div class="container clearfix">
+			<div id="content" class="grid_12">
+				<h1>Crime Hotspots</h1><br/><br/>
+				<p>A chloropleth map of India allows us to see the states having the highest cases registered under Crime against Women. West Bengal, Andhra Pradesh, Uttar Pradesh and Rajasthan (in that order) seem to be the crime ‘hotspots’ going by cases registered. The far north, north east and west of the country seem relatively safer as compared to the center and north. You can click on any crime category on the bar chart to drill down to the statewise distribution of the cases registered for that crime in 2012. 
+</p>
+			
+			</div>
+		</div>
+	</div>
+
+<div class="slide" id="slide1a" data-slide="3a" data-stellar-background-ratio="2">
+		
+		<div class="container clearfix">
+			<div id="content" class="grid_12">
+			<div id="content" class="grid_3">
+				<iframe src="./map/map.html"
+height="900px" width="700px"
+frameborder="0"
+scrolling="auto" margin-left: "95px;">
+<p>Your browser does not support iframes.</p>
+</iframe>
+			
+			</div>
+			<div id="content" class="grid_1">
+			</div>
+			<div id="content" class="grid_5">
+				<iframe src="../tubesBarHierarchy.html"
+height="900px" width="700px"
+frameborder="0"
+scrolling="auto" margin-left: "95px;">
+<p>Your browser does not support iframes.</p>
+</iframe>
+			
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+
+			
+		
+
+
+
+	<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
+		<div class="container clearfix">
+
+			<div id="content" class="grid_12">
+				<div id="content" class="grid_10">
+					<h1>External factors and people arrested</h1><br/><br/>
+					<p>Literacy rate and sex ratio are the factors most material to crime against women. The parallel coordinate chart below allows you to manipulate values for any of these variables to see the effect on different categories of crimes in different states and explore these relations. An interesting question here is whether you would expect higher values of literacy rate (more awareness) and sex ratio (more women in society) to be associated with higher (more reporting of crimes) or lower (reduced number of crimes) number of cases registered.</p>
+			</div>
+			<div style="clear: both;"></div>
+				
+		</div>
+
+			</div>
+			
+			
+
+		</div>
+
+	</div>
+
+
+	<div class="slide" id="slide1a" data-slide="4a" data-stellar-background-ratio="0.5">
+		<div class="container clearfix">
+
+			
+			<iframe src="../tubesParallel3.html"
+height="900px" width="700px"
+frameborder="0"
+scrolling="no">
+<p>Your browser does not support iframes.</p>
+</iframe>
+			
+
+		</div>
+	</div>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+	<script type="text/javascript" src="js/waypoints.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	
+	
+	<!-- <script type="text/javascript" src="js/scripts.min.js"></script> -->
+</body>
+</html>

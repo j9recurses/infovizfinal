@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Bar</title>
+    <link rel="stylesheet" href="./_css/main.css">
+    <script src="./_js/jquery-1.11.0.min.js"></script>
+    <script src="./_js/highcharts.js"></script>
+</head>
+<body>
+<div id="parent">
+    
+</div>
+
+<script>
+
+
+$(function () {
+        $('#parent').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '% Gender Based Distribution of  Perpetrators (2012)'
+            },
+            xAxis: {
+                categories: ['Rape', 'Kidnapping', 'Dowry', 'Modesty Assualt', 'Modesty Insult', 'Cruelty', 'Trafficking', 'Immoral Traffic Act', 'Dowry  Act', 'Indecent Representation Act', 'Sati Act']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Persons arrested'
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            credit: {
+                enabled:false
+            },
+                series: [{
+                name: 'Total Male',
+                data: [30168, 46772, 19387, 54931, 10931, 149811, 39, 4964, 12386, 159, 0],
+                color: '#0000FF'
+            }, {
+                name: 'Total Female',
+                data: [949, 2311, 5031, 1896, 178, 47951, 7, 3088, 3400, 16, 0],
+                color: '#FF0080'
+            }]
+        });
+    });
+
+</script>
+
+
+
+</body>
+</html>

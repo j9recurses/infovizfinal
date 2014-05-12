@@ -1,0 +1,18 @@
+{
+ "name": "flare",
+   "children": [
+  		{ "name":"Rape", "size": 239137, "color":"rgb(255,128,128)" },
+  		{ "name":"Kidnapping and Abduction of Women & Girls","size": 263907, "color":"rgb(128,00,00)"},
+		{ "name":"Dowery Deaths","size": 91202, "color":"rgb(00,128,64)"},
+   		{ "name":"Assault on women with intent to outrage her modesty", "size": 453155, "color":"rgb(00,255, 255)"},
+		{ "name":"Insult to the modesty of Women", "size": 124054, "color":"rgb(148,103,189)"},
+		{ "name":"Cruelty by Husband or his relatives", "size": 875201, "color":"rgb(255,127,14)"},
+ 		{ "name":"Importation of Girls from Foreign Country", "size": 892, "color":"rgb(64,00,128)"},
+   		{ "name":"Immoral Traffic Act", "size":53300, "color":"rgb(00,255,255)"},
+   		{ "name":"Dowry Prohibition Act", "size": 57689, "color":"rgb(128,128,128)"},
+  		{ "name":"Indecent Representation of Women Act","size": 15019, "color":"rgb(255,255,00)"},
+   		{ "name":"Commission of Sati Act", "size": 3, "color":"rgb(255,00,00)"}
+   	]
+} 
+
+

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Objectively Assessed Visualization</title>
+    <link rel="stylesheet" href="./LineChart/_css/main.css">
+    <script src="./LineChart/_js/jquery-1.11.0.min.js"></script>
+    <script src="./LineChart/_js/highcharts.js"></script>
+</head>
+<body>
+<div id="parent">
+    
+</div>
+
+<script>
+
+$(function () {
+        $('#parent').highcharts({
+            title: {
+                text: 'Categorywise Crimes (2001-2012)',
+                x: 50 //center
+            },
+            
+            credits:{
+              enabled: false  
+
+            },
+            xAxis: {
+                categories: ['2001', '2002', '2003', '2004', '2005', '2006',
+                    '2007', '2008', '2009', '2010', '2011', '2012']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '# of Crimes'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 0.2,
+                    color: '#cbcbcb'
+                }]
+            },
+            tooltip: {
+                //valueSuffix: ' thousand',
+                crosshairs: true,
+                //shared: true
+            },
+            legend: {
+               layout: 'horizontal',
+               align: 'bottom',
+               verticalAlign: 'bottom',
+               borderWidth: 1,
+               x: 50
+           },
+            series: [
+            {
+              
+                name: 'Rape',
+                color: 'rgb(255,128,128)',
+               marker: {enabled:false},
+                data: [16075, 16373, 15847, 18233, 18359, 19348, 20737, 21467, 21397, 22172, 24206, 24923]
+
+            },
+            
+            {
+              
+                name: 'Kidnapping',
+                color: 'rgb(128,0,0)',
+               marker: {enabled:false},
+                data: [14645,   14506,   13296,   15578,   15750,   17414,   20416,   22939,   25741,   29795,   35565,   38262] 
+ 
+
+            },
+            
+            {
+                name: 'Dowry',
+                color: 'rgb(0,128,64)',
+                marker: {enabled:false},
+                data: [6851, 6822, 6208, 7026, 6787, 7618, 8093, 8172, 8383, 8391, 8618, 8233] 
+
+            }, 
+            
+            {
+                name: 'Assault to modesty',
+                color: 'rgb(0,0,255)',
+                marker: {enabled:false},
+                data: [34124,   33943,   32939,   34567,   34175,   36617,   38734,   40413,   38711,   40613,   42968,   45351] 
+ 
+
+            },
+            
+            {
+                name: 'Insult to modesty',
+                color: 'rgb(148,103,189)',
+                marker: {enabled:false},
+                data: [9746,    10155,   12325,   10001,   9984,    9966,    10950,   12214,   11009,   9961,    8570,    9173] 
+
+            },
+            
+            {
+                name: 'Cruelty',
+                color: 'rgb(255,127,14)',
+                marker: {enabled:false},
+                data: [49170,   49237,   50703,   58121,   58319,   63128,   75930,   81344,   89546,   94041,   99135,   106527] 
+
+            },
+            
+            {
+                name: 'Trafficking',
+                color: 'rgb(64,0,128)',
+                marker: {enabled:false},
+                data: [114, 76,  46,  89,  149, 67,  61,  67,  48,  36,  80,  59] 
+
+            },
+            
+            {
+                name: 'Immoral Traffic Act',
+                color: 'rgb(0,255,255)',
+                marker: {enabled:false},
+                data: [8796,    6598,    5510,    5748,    5908,    4541,    3568,    2660,    2474,    2499,    2435,    2563]  
+
+            }, 
+            
+            {
+                name: 'Dowry Prohibition Act',
+                color: 'rgb(128,128,128)',
+                marker: {enabled:false},
+                data: [3222,   2816,   2684,   3592,    3204,    4504,    5623,    5555,    5650,    5182,    6619,    9038]  
+
+            }, 
+
+
+            {
+                name: 'Indecent Representation Act',
+                color: 'rgb(255,255,0)',
+                marker: {enabled:false},
+                data: [1052,    2508,    1043,    1378,    2917,    1562,    1200,    1025,    845, 895, 453, 141]  
+
+            }, 
+
+            {
+                name: 'Sati (P) Act',
+                color: 'rgb(255,0,0)',
+               marker: {enabled:false},
+                data: [0,   0,   0,   0,   1,   0,   0,   1,   0,   0,   1,   0]  
+
+            }
+
+            
+
+            ]
+            
+        });
+
+
+        
+});
+
+</script>
+
+
+
+</body>
+</html>
