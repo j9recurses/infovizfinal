@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Bar</title>
+    <link rel="stylesheet" href="./_css/main.css">
+    <script src="./_js/jquery-1.11.0.min.js"></script>
+    <script src="./_js/highcharts.js"></script>
+</head>
+<body>
+<div id="parent">
+    
+</div>
+
+<script>
+
+
+$(function () {
+        $('#parent').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Females arrested for crimes against women by age group in 2012'
+            },
+            xAxis: {
+                categories: ['Rape',  'Kidnapping',  'Dowry Deaths', 'Domestic Abuse', 'Assault to modesty', 'Insult to Modesty', 'Trafficking',  'Indecent Representation Act','Dowry Prohibition Act']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                text: 'Number of Crimes Against Women'
+                },
+                stackLabels: {
+                    enabled: true,
+                    style: {
+                        fontWeight: 'bold',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                    }
+                }
+            },
+            legend: {
+                    align: 'center',
+                x: 30,
+                verticalAlign: 'bottom',
+                y: 20,
+                floating: false,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                borderColor: '#CCC',
+                borderWidth: 1,
+                shadow: false
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.x +'</b><br/>'+
+                        this.series.name +': '+ this.y +'<br/>'+
+                        'Total: '+ this.point.stackTotal;
+                }
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: false,
+                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                        style: {
+                            textShadow: '0 0 3px black, 0 0 3px black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Females less than 18 years old',
+                data:  [ 11  , 46  ,30,  134 ,3  , 1  , 17 , 18]
+            }, 
+            {
+                name: 'Females 18-30 years old',
+                data: [398 , 912 ,1481  ,  12447 ,  724, 75 , 1700 ,  944]
+            },
+            {
+                name: 'Females 30-45 years old',
+                data: [404  ,1022   , 1964   , 18258 ,  849, 74,   1131  ,   1319]
+            }, 
+             {
+                name: 'Females 45-60 years old',
+                data: [128 , 314 ,1422   , 14587 ,  274, 22 , 216,  985]
+            },
+            {
+                name: 'Females 60+ years old',
+                data: [8 ,   17 , 134 ,2525  ,  46,  6 ,  24 ,  134]
+            }
+
+
+
+            ]
+        });
+    });
+    
+</script>
+
+
+
+</body>
+</html>

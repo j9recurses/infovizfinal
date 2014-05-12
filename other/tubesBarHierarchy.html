@@ -19,15 +19,25 @@ rect.background {
   fill: none;
   stroke: #000;
 }
+
+
+p {
+  /*font-family: 'Helvetica', sans-serif;*/
+color:  #4C4C4C;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 100;
+  /*letter-spacing: 1.5px;*/
+  font-size: 1em;
+  padding-left: 150px;
+  /*color: #fff;*/
+}
  
 </style>
 <body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="parseDataBarHierarchy.js"></script>
-<div id ="caption"><h2 align="center">All cases registered (2012)</h2>
-
-<br/>
+<div id ="caption"><p>Click on the red bars to see the breakdown by province; click to return</p>
 
 </div>
 
@@ -46,7 +56,7 @@ var x = d3.scale.linear()
 var barHeight = 15;
  
 var color = d3.scale.ordinal()
-    .range(["steelblue", "#ccc"]);
+    .range(["red", "pink"]);
  
 var duration = 750,
     delay = 25;
